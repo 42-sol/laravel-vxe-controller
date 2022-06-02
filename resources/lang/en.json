@@ -1,0 +1,4 @@
+{
+  "Unhandled SQL error": "Unhandled error [:code]",
+  "SQL error 23000": "You cannot delete an entry that is already in use"
+}

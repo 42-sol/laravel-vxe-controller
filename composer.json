@@ -1,0 +1,26 @@
+{
+  "name": "42sol/laravel-vxe-controller",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "VxeController\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "galitskiyem",
+      "email": "galitskiyem@askonalife.com"
+    }
+  ],
+  "require": {
+    "laravel/framework": ">=8.0"
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "VxeController\\Providers\\VxeServiceProvider"
+      ]
+    }
+  }
+}
