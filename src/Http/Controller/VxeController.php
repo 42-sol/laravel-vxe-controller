@@ -12,17 +12,12 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Lang;
 
-abstract class VxeController extends Controller {
+abstract class VxeController extends Controller implements VxeControllerInterface {
   const FILTER_DATA_KEY = 'datas';
   const FILTER_VALUE_KEY = 'values';
 
   public bool $routeUpdate = true;
   public bool $routeDestroy = true;
-
-  /**
-   * Link model with controller
-   */
-  abstract function model();
 
   /**
    * Attributes to automatically eager update
