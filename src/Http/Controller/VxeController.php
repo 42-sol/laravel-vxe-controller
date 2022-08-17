@@ -16,11 +16,25 @@ abstract class VxeController extends Controller implements VxeControllerInterfac
   const FILTER_DATA_KEY = 'datas';
   const FILTER_VALUE_KEY = 'values';
 
+  /**
+   * @var bool Enable or disable route for update action
+   */
   public bool $routeUpdate = true;
+
+  /**
+   * @var bool Enable or disable router for destroy action
+   */
   public bool $routeDestroy = true;
 
   /**
-   * Attributes to automatically eager update
+   * Relations to automatically eager load
+   *
+   * @var array
+   */
+  protected $eagerLoad = [];
+
+  /**
+   * Relations to automatically eager update
    *
    * @var array
    */
@@ -135,8 +149,10 @@ abstract class VxeController extends Controller implements VxeControllerInterfac
       $body
     );
 
-    $this->eagerUpdate($record, $body);;
+    $this->eagerUpdate($record, $body);
     $this->afterUpdate($record, $body);
+
+    $record->load($this->eagerLoad);
 
     return new JsonResponse($record);
   }
@@ -199,7 +215,9 @@ abstract class VxeController extends Controller implements VxeControllerInterfac
 
     $table = $query->getModel()->getTable();
 
-    $query->select($table.'.*');
+    $query
+      ->select($table.'.*')
+      ->with($this->eagerLoad);
 
     $this->applyQueryParams($request, $query);
 
