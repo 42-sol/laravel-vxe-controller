@@ -6,6 +6,7 @@
       "VxeController\\": "src/"
     }
   },
+  "license": "MIT",
   "authors": [
     {
       "name": "galitskiyem",
