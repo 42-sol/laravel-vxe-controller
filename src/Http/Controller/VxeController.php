@@ -154,7 +154,10 @@ abstract class VxeController extends Controller implements VxeControllerInterfac
 
     $record->load($this->eagerLoad);
 
-    return new JsonResponse($record);
+    return new JsonResponse([
+      'status' => true,
+      'data' => $record
+    ]);
   }
 
   /**
